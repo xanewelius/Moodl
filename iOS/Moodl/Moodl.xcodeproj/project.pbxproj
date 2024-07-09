@@ -56,15 +56,111 @@
 		40F4CE092C3CEAD4001557C7 /* Moodl */ = {
 			isa = PBXGroup;
 			children = (
-				40F4CE0A2C3CEAD4001557C7 /* AppDelegate.swift */,
-				40F4CE0C2C3CEAD4001557C7 /* SceneDelegate.swift */,
-				40F4CE0E2C3CEAD4001557C7 /* ViewController.swift */,
-				40F4CE102C3CEAD4001557C7 /* Main.storyboard */,
-				40F4CE132C3CEAD7001557C7 /* Assets.xcassets */,
-				40F4CE152C3CEAD7001557C7 /* LaunchScreen.storyboard */,
+				40F4CE272C3CECAB001557C7 /* Network */,
+				40F4CE242C3CEC35001557C7 /* Controllers */,
+				40F4CE252C3CEC43001557C7 /* Model */,
+				40F4CE262C3CEC54001557C7 /* Views */,
+				40F4CE1E2C3CEB9A001557C7 /* Resources */,
 				40F4CE182C3CEAD7001557C7 /* Info.plist */,
 			);
 			path = Moodl;
+			sourceTree = "<group>";
+		};
+		40F4CE1E2C3CEB9A001557C7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE1F2C3CEBB0001557C7 /* App */,
+				40F4CE212C3CEBD9001557C7 /* Interface */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		40F4CE1F2C3CEBB0001557C7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE202C3CEBBC001557C7 /* Root */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		40F4CE202C3CEBBC001557C7 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE0A2C3CEAD4001557C7 /* AppDelegate.swift */,
+				40F4CE0C2C3CEAD4001557C7 /* SceneDelegate.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		40F4CE212C3CEBD9001557C7 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE232C3CEC07001557C7 /* Launch */,
+				40F4CE222C3CEBF3001557C7 /* Assets */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		40F4CE222C3CEBF3001557C7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE132C3CEAD7001557C7 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		40F4CE232C3CEC07001557C7 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE102C3CEAD4001557C7 /* Main.storyboard */,
+				40F4CE152C3CEAD7001557C7 /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		40F4CE242C3CEC35001557C7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE0E2C3CEAD4001557C7 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		40F4CE252C3CEC43001557C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		40F4CE262C3CEC54001557C7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		40F4CE272C3CECAB001557C7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE292C3CECD2001557C7 /* Providers */,
+				40F4CE282C3CECC8001557C7 /* Models */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		40F4CE282C3CECC8001557C7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		40F4CE292C3CECD2001557C7 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +314,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -275,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -297,7 +393,6 @@
 				INFOPLIST_FILE = Moodl/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,7 +420,6 @@
 				INFOPLIST_FILE = Moodl/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
