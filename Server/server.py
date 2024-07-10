@@ -11,7 +11,7 @@ from concurrent.futures import ThreadPoolExecutor
 app = Flask(__name__)
 
 logging.basicConfig(level=logging.INFO)
-executor = ThreadPoolExecutor(max_workers=4)
+executor = ThreadPoolExecutor(max_workers=10)
 
 def fetch_data(section):
     """
@@ -56,6 +56,8 @@ def search():
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--disable-gpu')
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--ignore-ssl-errors')
     options.add_argument('--window-size=640,480')
     
     try:
@@ -75,6 +77,7 @@ def search():
                 except Exception as e:
                     logging.error(f'Ошибка при получении данных: {e}')
         
+        driver.quit()
         return jsonify({'result': result})
     except Exception as e:
         logging.error(f'Ошибка с WebDriver: {e}')
@@ -114,11 +117,10 @@ def add():
     file_path = 'data.json'
     
     try:
+        data = []
         if os.path.exists(file_path):
             with open(file_path, 'r', encoding='utf-8') as file:
                 data = json.load(file)
-        else:
-            data = []
         
         data.append(new_entry)
         
@@ -152,7 +154,7 @@ def get_data():
         logging.error(f'Ошибка при чтении файла: {e}')
         return jsonify({'error': 'Внутренняя ошибка сервера'}), 500
 
-@app.route('/clear', methods=['GET'])
+@app.route('/clear', methods=['DELETE'])
 def clear_data():
     """
     Очищает файл data.json.
