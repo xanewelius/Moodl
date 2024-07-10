@@ -10,10 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 app = Flask(__name__)
 
-# Настройка логирования
 logging.basicConfig(level=logging.INFO)
-
-# Пул потоков для параллельной обработки
 executor = ThreadPoolExecutor(max_workers=4)
 
 def fetch_data(section):
@@ -70,10 +67,13 @@ def search():
 
             future_to_section = {executor.submit(fetch_data, section): section for section in sections}
             for future in future_to_section:
-                data = future.result()
-                if data and (data['title'], data['img']) not in seen:
-                    result.append(data)
-                    seen.add((data['title'], data['img']))
+                try:
+                    data = future.result()
+                    if data and (data['title'], data['img']) not in seen:
+                        result.append(data)
+                        seen.add((data['title'], data['img']))
+                except Exception as e:
+                    logging.error(f'Ошибка при получении данных: {e}')
         
         return jsonify({'result': result})
     except Exception as e:
@@ -113,18 +113,22 @@ def add():
     new_entry['id'] = generate_unique_id()
     file_path = 'data.json'
     
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-    else:
-        data = []
-    
-    data.append(new_entry)
-    
-    with open(file_path, 'w', encoding='utf-8') as file:
-        json.dump(data, file, ensure_ascii=False, indent=4)
-    
-    return jsonify({'status': 'success', 'data': new_entry}), 201
+    try:
+        if os.path.exists(file_path):
+            with open(file_path, 'r', encoding='utf-8') as file:
+                data = json.load(file)
+        else:
+            data = []
+        
+        data.append(new_entry)
+        
+        with open(file_path, 'w', encoding='utf-8') as file:
+            json.dump(data, file, ensure_ascii=False, indent=4)
+        
+        return jsonify({'status': 'success', 'data': new_entry}), 201
+    except Exception as e:
+        logging.error(f'Ошибка при добавлении данных: {e}')
+        return jsonify({'error': 'Внутренняя ошибка сервера'}), 500
 
 @app.route('/get', methods=['GET'])
 def get_data():
@@ -136,13 +140,17 @@ def get_data():
     """
     file_path = 'data.json'
     
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-    else:
-        return jsonify({'error': 'Файл data.json не найден'}), 404
-    
-    return jsonify(data)
+    try:
+        if os.path.exists(file_path):
+            with open(file_path, 'r', encoding='utf-8') as file:
+                data = json.load(file)
+        else:
+            return jsonify({'error': 'Файл data.json не найден'}), 404
+        
+        return jsonify(data)
+    except Exception as e:
+        logging.error(f'Ошибка при чтении файла: {e}')
+        return jsonify({'error': 'Внутренняя ошибка сервера'}), 500
 
 @app.route('/clear', methods=['GET'])
 def clear_data():
@@ -154,12 +162,16 @@ def clear_data():
     """
     file_path = 'data.json'
 
-    if os.path.exists(file_path):
-        with open(file_path, 'w', encoding='utf-8') as file:
-            json.dump([], file, ensure_ascii=False, indent=4)
-        return jsonify({'status': 'success'}), 200
-    else:
-        return jsonify({'error': 'Файл data.json не найден'}), 404
+    try:
+        if os.path.exists(file_path):
+            with open(file_path, 'w', encoding='utf-8') as file:
+                json.dump([], file, ensure_ascii=False, indent=4)
+            return jsonify({'status': 'success'}), 200
+        else:
+            return jsonify({'error': 'Файл data.json не найден'}), 404
+    except Exception as e:
+        logging.error(f'Ошибка при очистке данных: {e}')
+        return jsonify({'error': 'Внутренняя ошибка сервера'}), 500
 
 @app.route('/delete/<string:item_id>', methods=['DELETE'])
 def delete_item(item_id):
@@ -174,18 +186,27 @@ def delete_item(item_id):
     """
     file_path = 'data.json'
     
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-        
-        data = [item for item in data if item['id'] != item_id]
-        
-        with open(file_path, 'w', encoding='utf-8') as file:
-            json.dump(data, file, ensure_ascii=False, indent=4)
-        
-        return jsonify({'status': 'success'}), 200
-    else:
-        return jsonify({'error': 'Файл data.json не найден'}), 404
+    try:
+        if os.path.exists(file_path):
+            with open(file_path, 'r', encoding='utf-8') as file:
+                data = json.load(file)
+            
+            initial_length = len(data)
+            data = [item for item in data if item['id'] != item_id]
+            final_length = len(data)
+            
+            if initial_length == final_length:
+                return jsonify({'error': 'Товар с указанным ID не найден'}), 404
+            
+            with open(file_path, 'w', encoding='utf-8') as file:
+                json.dump(data, file, ensure_ascii=False, indent=4)
+            
+            return jsonify({'status': 'success'}), 200
+        else:
+            return jsonify({'error': 'Файл data.json не найден'}), 404
+    except Exception as e:
+        logging.error(f'Ошибка при удалении данных: {e}')
+        return jsonify({'error': 'Внутренняя ошибка сервера'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
