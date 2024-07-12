@@ -7,10 +7,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    override func viewDidLoad() {
+public class ViewController: UIViewController {
+    public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = .white
+        self.title = "Лекарства"
+        recieve()
     }
+    
+    public func recieve() {
+        setupUI()
+        layout()
+    }
+    
+    public func setupUI() {}
+    public func layout() {}
 }
-

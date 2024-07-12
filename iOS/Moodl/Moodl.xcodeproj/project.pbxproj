@@ -13,6 +13,11 @@
 		40F4CE122C3CEAD4001557C7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 40F4CE112C3CEAD4001557C7 /* Base */; };
 		40F4CE142C3CEAD7001557C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40F4CE132C3CEAD7001557C7 /* Assets.xcassets */; };
 		40F4CE172C3CEAD7001557C7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 40F4CE162C3CEAD7001557C7 /* Base */; };
+		40F4CE2B2C3F0599001557C7 /* PillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F4CE2A2C3F0599001557C7 /* PillsViewController.swift */; };
+		40F4CE2D2C3F0616001557C7 /* PillsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F4CE2C2C3F0616001557C7 /* PillsProvider.swift */; };
+		40F4CE2F2C3F0621001557C7 /* Pills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F4CE2E2C3F0621001557C7 /* Pills.swift */; };
+		40F4CE342C3F0A00001557C7 /* PillsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F4CE332C3F0A00001557C7 /* PillsGrid.swift */; };
+		40F4CE362C3F0A2E001557C7 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F4CE352C3F0A2E001557C7 /* Grid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		40F4CE132C3CEAD7001557C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40F4CE162C3CEAD7001557C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40F4CE182C3CEAD7001557C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40F4CE2A2C3F0599001557C7 /* PillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillsViewController.swift; sourceTree = "<group>"; };
+		40F4CE2C2C3F0616001557C7 /* PillsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillsProvider.swift; sourceTree = "<group>"; };
+		40F4CE2E2C3F0621001557C7 /* Pills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pills.swift; sourceTree = "<group>"; };
+		40F4CE332C3F0A00001557C7 /* PillsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillsGrid.swift; sourceTree = "<group>"; };
+		40F4CE352C3F0A2E001557C7 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +68,6 @@
 			children = (
 				40F4CE272C3CECAB001557C7 /* Network */,
 				40F4CE242C3CEC35001557C7 /* Controllers */,
-				40F4CE252C3CEC43001557C7 /* Model */,
 				40F4CE262C3CEC54001557C7 /* Views */,
 				40F4CE1E2C3CEB9A001557C7 /* Resources */,
 				40F4CE182C3CEAD7001557C7 /* Info.plist */,
@@ -121,21 +130,17 @@
 		40F4CE242C3CEC35001557C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				40F4CE2A2C3F0599001557C7 /* PillsViewController.swift */,
 				40F4CE0E2C3CEAD4001557C7 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		40F4CE252C3CEC43001557C7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		40F4CE262C3CEC54001557C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				40F4CE322C3F09E9001557C7 /* Base */,
+				40F4CE302C3F09D0001557C7 /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 		40F4CE282C3CECC8001557C7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				40F4CE2E2C3F0621001557C7 /* Pills.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,8 +165,33 @@
 		40F4CE292C3CECD2001557C7 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				40F4CE2C2C3F0616001557C7 /* PillsProvider.swift */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		40F4CE302C3F09D0001557C7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE312C3F09DB001557C7 /* Collection */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		40F4CE312C3F09DB001557C7 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE332C3F0A00001557C7 /* PillsGrid.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		40F4CE322C3F09E9001557C7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE352C3F0A2E001557C7 /* Grid.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,9 +265,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40F4CE342C3F0A00001557C7 /* PillsGrid.swift in Sources */,
+				40F4CE2F2C3F0621001557C7 /* Pills.swift in Sources */,
 				40F4CE0F2C3CEAD4001557C7 /* ViewController.swift in Sources */,
+				40F4CE362C3F0A2E001557C7 /* Grid.swift in Sources */,
+				40F4CE2D2C3F0616001557C7 /* PillsProvider.swift in Sources */,
 				40F4CE0B2C3CEAD4001557C7 /* AppDelegate.swift in Sources */,
 				40F4CE0D2C3CEAD4001557C7 /* SceneDelegate.swift in Sources */,
+				40F4CE2B2C3F0599001557C7 /* PillsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
