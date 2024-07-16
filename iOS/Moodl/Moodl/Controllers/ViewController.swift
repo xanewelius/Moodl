@@ -27,10 +27,12 @@ public class ViewController: UIViewController {
     }
     
     public func recieve() {
+        setupBar()
         setupUI()
         layout()
     }
     
+    public func setupBar() {}
     public func setupUI() {}
     public func layout() {}
 }

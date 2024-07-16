@@ -28,9 +28,23 @@ final class PillsViewController: ViewController {
         collection.reloadData()
     }
     
+    override func setupBar() {
+        super.setupBar()
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 82, height: view.frame.height))
+        titleLabel.text = "Лекарства"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        navigationItem.titleView = titleLabel
+
+        let buttonContainer = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 28))
+        let rightButton = UIButton(type: .custom)
+        rightButton.setImage(UIImage(named: "plus"), for: .normal)
+        rightButton.frame = CGRect(x: 8, y: 0, width: 28, height: 28)
+        buttonContainer.addSubview(rightButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: buttonContainer)
+    }
+    
     override func setupUI() {
         super.setupUI()
-        self.title = "Лекарства"
         collection.backgroundColor = .clear
         collection.delegate = self
         collection.dataSource = self
@@ -65,6 +79,6 @@ extension PillsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return 16
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 40, height: 105)
+        return CGSize(width: view.frame.width - 40, height: 124)
     }
 }
