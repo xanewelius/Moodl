@@ -8,11 +8,22 @@
 import UIKit
 
 public class ViewController: UIViewController {
+    public var provider: Provider?
+    
+    public init(provider: Provider? = Provider()) {
+        self.provider = provider
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) { nil }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.title = "Лекарства"
-        recieve()
+        provider?.setup() { [weak self] in
+            DispatchQueue.main.async {
+                self?.recieve()
+            }
+        }
     }
     
     public func recieve() {
