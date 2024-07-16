@@ -82,3 +82,53 @@ extension PillsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return CGSize(width: view.frame.width - 40, height: 124)
     }
 }
+
+extension PillsViewController {
+    public func presentAlert(pill: Pill) {
+        var alertStyle = UIAlertController.Style.actionSheet
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
+            alertStyle = .alert
+        }
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: alertStyle)
+        let edit = UIAlertAction(title: "Редактировать", style: .default) { [weak self] _ in
+            //let controller =
+            //self?.navigationController?.pushViewController(controller, animated: true)
+        }
+        edit.setValue(UIColor.black, forKey: "titleTextColor")
+        let delete = UIAlertAction(title: "Удалить карту", style: .destructive) { [weak self] _ in
+            guard let self = self else { return }
+            guard let index = (self.provider as? PillsProvider)?.pills.firstIndex(where: { $0.id == pill.id }) else { return }
+            Task {
+                do {
+                    let _ = try await (self.provider as? PillsProvider)?.delete(id: pill.id ?? "")
+                    
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.collection.performBatchUpdates({
+                            self.collection.deleteItems(at: [IndexPath(item: index, section: 0)])
+                            (self.provider as? PillsProvider)?.pills.remove(at: index)
+                        }, completion: { finished in
+                            if finished {
+                                Task {
+                                    await (self.provider as? PillsProvider)?.preloaded()
+                                    self.collection.reloadData()
+                                }
+                            }
+                        })
+                    })
+                } catch {
+                    print("Ошибка удаления лекарства")
+                }
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "Отмена", style: .cancel)
+        cancel.setValue(UIColor.black, forKey: "titleTextColor")
+        
+        alert.addAction(edit)
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        
+        alert.dismiss(animated: true)
+        present(alert, animated: true)
+    }
+}

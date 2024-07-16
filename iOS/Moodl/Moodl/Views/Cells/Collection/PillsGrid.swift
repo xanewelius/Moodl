@@ -9,6 +9,7 @@ import UIKit
 
 internal final class PillsGrid: Grid {
     static var id: String = "pillsGrid"
+    private var pill: Pill?
     
     private var image    = UIImageView()
     private var name     = UILabel()
@@ -24,6 +25,7 @@ internal final class PillsGrid: Grid {
     }
     
     public func configure(pill: Pill) {
+        self.pill = pill
         image.loadImage(pill.img ?? "")
         name.text = pill.name
         category.text = pill.category?.first
@@ -44,6 +46,7 @@ internal final class PillsGrid: Grid {
         
         options.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         options.tintColor = .white
+        options.addTarget(self, action: #selector(tapped), for: .touchUpInside)
         
         category.textColor = .white
         //category.backgroundColor = #colorLiteral(red: 0.05490196078, green: 0.3843137255, blue: 0.3568627451, alpha: 1) //0E625B
@@ -85,5 +88,11 @@ internal final class PillsGrid: Grid {
         
         date.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
         date.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
+    }
+    
+    @objc
+    private func tapped() {
+        guard let pill = self.pill else { return }
+        (self.controller as? PillsViewController)?.presentAlert(pill: pill)
     }
 }
