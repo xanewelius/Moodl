@@ -37,6 +37,7 @@ internal final class PillsGrid: Grid {
         image.layer.cornerRadius = 16
         image.backgroundColor = #colorLiteral(red: 0, green: 0.5803921569, blue: 0.5294117647, alpha: 1) //009487
         image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
         
         name.textColor = .white
         //name.backgroundColor = #colorLiteral(red: 0.07058823529, green: 0.4352941176, blue: 0.4039215686, alpha: 1) //126F67
