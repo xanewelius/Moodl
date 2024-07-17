@@ -20,6 +20,7 @@
 		40F4CE362C3F0A2E001557C7 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F4CE352C3F0A2E001557C7 /* Grid.swift */; };
 		40F4CE382C45D7FF001557C7 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F4CE372C45D7FF001557C7 /* Provider.swift */; };
 		40F4CE3B2C45F1C5001557C7 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F4CE3A2C45F1C5001557C7 /* UIImageView+Extensions.swift */; };
+		40F4CE3E2C47A0E1001557C7 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F4CE3D2C47A0E1001557C7 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		40F4CE352C3F0A2E001557C7 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		40F4CE372C45D7FF001557C7 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		40F4CE3A2C45F1C5001557C7 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		40F4CE3D2C47A0E1001557C7 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +137,9 @@
 		40F4CE242C3CEC35001557C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				40F4CE3F2C47A2D0001557C7 /* Base */,
 				40F4CE2A2C3F0599001557C7 /* PillsViewController.swift */,
-				40F4CE0E2C3CEAD4001557C7 /* ViewController.swift */,
+				40F4CE3D2C47A0E1001557C7 /* AddViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -206,6 +209,14 @@
 				40F4CE3A2C45F1C5001557C7 /* UIImageView+Extensions.swift */,
 			);
 			path = Interface;
+			sourceTree = "<group>";
+		};
+		40F4CE3F2C47A2D0001557C7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				40F4CE0E2C3CEAD4001557C7 /* ViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +293,7 @@
 				40F4CE3B2C45F1C5001557C7 /* UIImageView+Extensions.swift in Sources */,
 				40F4CE342C3F0A00001557C7 /* PillsGrid.swift in Sources */,
 				40F4CE2F2C3F0621001557C7 /* Pill.swift in Sources */,
+				40F4CE3E2C47A0E1001557C7 /* AddViewController.swift in Sources */,
 				40F4CE0F2C3CEAD4001557C7 /* ViewController.swift in Sources */,
 				40F4CE362C3F0A2E001557C7 /* Grid.swift in Sources */,
 				40F4CE382C45D7FF001557C7 /* Provider.swift in Sources */,

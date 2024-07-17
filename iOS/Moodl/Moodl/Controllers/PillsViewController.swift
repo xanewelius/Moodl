@@ -91,8 +91,8 @@ extension PillsViewController {
         }
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: alertStyle)
         let edit = UIAlertAction(title: "Редактировать", style: .default) { [weak self] _ in
-            //let controller =
-            //self?.navigationController?.pushViewController(controller, animated: true)
+            let controller = AddViewController()
+            self?.navigationController?.pushViewController(controller, animated: true)
         }
         edit.setValue(UIColor.black, forKey: "titleTextColor")
         let delete = UIAlertAction(title: "Удалить карту", style: .destructive) { [weak self] _ in
