@@ -61,9 +61,11 @@ final class AddViewController: ViewController {
         name.text = "Название лекарства"
         name.font = .systemFont(ofSize: 17)
         
-        //nameField.placeholder = "Название"
+        nameField.placeholder = "Название"
         nameField.layer.cornerRadius = 16
         nameField.layer.borderColor = UIColor.black.cgColor
+        nameField.leftView = UIView(frame: .init(x: 0, y: 0, width: 16, height: .zero))
+        nameField.leftViewMode = .always
         nameField.layer.borderWidth = 1
         
         date.text = "Срок годности"
