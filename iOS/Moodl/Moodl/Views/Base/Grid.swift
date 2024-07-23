@@ -21,11 +21,7 @@ public class Grid: UICollectionViewCell {
     
     public func setup() {}
     private func setupContent() {
-        contentView.addSubview(content)
-        
-        content.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        content.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        content.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        content.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        contentView.add(content)
+        content.box(in: contentView)
     }
 }

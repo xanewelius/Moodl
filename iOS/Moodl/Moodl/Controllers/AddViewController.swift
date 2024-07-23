@@ -102,19 +102,6 @@ final class AddViewController: ViewController {
     override func layout() {
         super.layout()
         
-        scroll.translatesAutoresizingMaskIntoConstraints = false
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        name.translatesAutoresizingMaskIntoConstraints = false
-        nameField.translatesAutoresizingMaskIntoConstraints = false
-        iconCollection.translatesAutoresizingMaskIntoConstraints = false
-        date.translatesAutoresizingMaskIntoConstraints = false
-        dateField.translatesAutoresizingMaskIntoConstraints = false
-        category.translatesAutoresizingMaskIntoConstraints = false
-        categoryCollection.translatesAutoresizingMaskIntoConstraints = false
-        dosage.translatesAutoresizingMaskIntoConstraints = false
-        specification.translatesAutoresizingMaskIntoConstraints = false
-        save.translatesAutoresizingMaskIntoConstraints = false
-        
         stack.addArrangedSubview(name)
         stack.addArrangedSubview(nameField)
         stack.addArrangedSubview(iconCollection)
@@ -126,19 +113,13 @@ final class AddViewController: ViewController {
         stack.addArrangedSubview(specification)
         stack.addArrangedSubview(save)
         
-        scroll.addSubview(stack)
-        view.addSubview(scroll)
+        scroll.add(stack)
+        view.add(scroll)
         
-        scroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        scroll.box(in: view, safe: true)
         
         stack.widthAnchor.constraint(equalToConstant: view.frame.width - 40).isActive = true
-        stack.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 0).isActive = true
-        stack.leadingAnchor.constraint(equalTo: scroll.leadingAnchor, constant: 20).isActive = true
-        stack.trailingAnchor.constraint(equalTo: scroll.trailingAnchor, constant: -20).isActive = true
-        stack.bottomAnchor.constraint(equalTo: scroll.bottomAnchor, constant: 0).isActive = true
+        stack.box(in: scroll, insets: .init(top: 0, left: 20, bottom: 0, right: 20))
         
         name.topAnchor.constraint(equalTo: stack.topAnchor, constant: 16).isActive = true
         nameField.heightAnchor.constraint(equalToConstant: 48).isActive = true
@@ -156,7 +137,6 @@ extension AddViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return UICollectionViewCell()
     }

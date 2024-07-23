@@ -14,7 +14,6 @@ final class PillsViewController: ViewController {
         layout.minimumLineSpacing = 16
         
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.translatesAutoresizingMaskIntoConstraints = false
         collection.showsVerticalScrollIndicator = false
         return collection
     }()
@@ -53,12 +52,8 @@ final class PillsViewController: ViewController {
     
     override func layout() {
         super.layout()
-        view.addSubview(collection)
-        
-        collection.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collection.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collection.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collection.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        view.add(collection)
+        collection.box(in: view)
     }
 }
 

@@ -56,20 +56,13 @@ internal final class PillsGrid: Grid {
     }
     
     private func layout() {
-        image.translatesAutoresizingMaskIntoConstraints = false
-        name.translatesAutoresizingMaskIntoConstraints = false
-        options.translatesAutoresizingMaskIntoConstraints = false
-        category.translatesAutoresizingMaskIntoConstraints = false
-        date.translatesAutoresizingMaskIntoConstraints = false
+        add(image)
+        add(name)
+        add(options)
+        add(category)
+        add(date)
         
-        addSubview(image)
-        addSubview(name)
-        addSubview(options)
-        addSubview(category)
-        addSubview(date)
-        
-        image.widthAnchor.constraint(equalToConstant: 92).isActive = true
-        image.heightAnchor.constraint(equalToConstant: 92).isActive = true
+        image.size(width: 92, height: 92)
         image.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
         image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         image.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
@@ -78,8 +71,7 @@ internal final class PillsGrid: Grid {
         name.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 16).isActive = true
         name.trailingAnchor.constraint(equalTo: options.leadingAnchor, constant: -12).isActive = true
         
-        options.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        options.heightAnchor.constraint(equalToConstant: 21).isActive = true
+        options.size(width: 24, height: 21)
         options.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
         options.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
         
