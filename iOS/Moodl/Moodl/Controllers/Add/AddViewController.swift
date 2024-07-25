@@ -18,7 +18,7 @@ final class AddViewController: ViewController {
         return collection
     }()
     private let categoryCollection: UICollectionView = {
-        let layout = MultilineFlowLayout()
+        let layout = TagsLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 16
@@ -31,6 +31,7 @@ final class AddViewController: ViewController {
     
     private let icon = ["", "", "", ""]
     private let _category = ["Пищеварение", "Противоаллергенное", "Анальгетик", "Противозастудное", "Противовоспалительное", "Антибиотик", "Антибактериальные"]
+    private var selectedCategories: Set<Int> = []
     
     private let scroll        = UIScrollView()
     private let stack         = UIStackView()
@@ -187,6 +188,11 @@ extension AddViewController: UICollectionViewDelegate, UICollectionViewDataSourc
         case categoryCollection:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryGrid.id, for: indexPath) as? CategoryGrid else { return UICollectionViewCell() }
             cell.configure(category: _category[indexPath.row])
+            if selectedCategories.contains(indexPath.item) {
+                cell.layer.borderColor = UIColor.black.cgColor
+                cell.layer.borderWidth = 1
+                cell.label.textColor = UIColor.black
+            }
             return cell
         default:
             return UICollectionViewCell()
@@ -208,6 +214,16 @@ extension AddViewController: UICollectionViewDelegate, UICollectionViewDataSourc
             return CGSize(width: width, height: 27)
         default:
             return CGSize.zero
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == categoryCollection {
+            if selectedCategories.contains(indexPath.item) {
+                selectedCategories.remove(indexPath.item)
+            } else {
+                selectedCategories.insert(indexPath.item)
+            }
+            collectionView.reloadItems(at: [indexPath])
         }
     }
 }

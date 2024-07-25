@@ -10,7 +10,7 @@ import UIKit
 internal final class CategoryGrid: Grid {
     static var id: String = "categoryGrid"
     
-    private var label = UILabel()
+    public var label = UILabel()
     
     override func setup() {
         super.setup()
@@ -37,4 +37,3 @@ internal final class CategoryGrid: Grid {
         label.box(in: self, insets: .init(top: 5, left: 10, bottom: 5, right: 10))
     }
 }
-
